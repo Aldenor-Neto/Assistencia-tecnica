@@ -1,9 +1,9 @@
 package org.example;
 
 import org.example.dao.CidadeDAO;
+import org.example.dao.EnderecoDAO;
 import org.example.dao.UfDAO;
-import org.example.model.Cidade;
-import org.example.model.UF;
+import org.example.model.Endereco;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -12,8 +12,9 @@ public class Main {
 
     static UfDAO ufDao = new UfDAO();
     static CidadeDAO cidadeDao = new CidadeDAO();
+    static EnderecoDAO enderecoDao = new EnderecoDAO();
 
-    public static void main(String[] args)throws SQLException {
+    public static void main(String[] args) throws SQLException {
 /*
         UF uf = new UF(2, "São paulo", 2);
         //ufDao.insertUf(uf);
@@ -37,7 +38,7 @@ uf = ufDao.selectUf(2);
         cidade =cidadeDao.selectCidade(2);
         System.out.println(cidade);
 
-        cidade.setDescricao("Bahia");
+        cidade.setDescricao("Bahia");10
         cidadeDao.updateCidade(cidade);
         cidade = cidadeDao.selectCidade(2);
         System.out.println(cidade);
@@ -50,6 +51,28 @@ uf = ufDao.selectUf(2);
         listCidades.forEach(System.out::println);
 
         System.out.println(cidadeDao.count());
-*/
+
+        //endereco
+        Endereco endereco = new Endereco(1, "Noventa", "145", "Jereissaati II", "61800-000", 2);
+        //enderecoDao.insertEndereco(endereco);
+        endereco = enderecoDao.selectEndereco(6);
+        System.out.println(endereco);
+
+        endereco.setRua("Avenida XXi");
+        endereco.setNumero("10");
+        enderecoDao.updateEndereco(endereco);
+        endereco = enderecoDao.selectEndereco(6);
+        System.out.println(endereco);
+
+        List<Endereco> listEndereco = enderecoDao.selectAllEndereco();
+        listEndereco.forEach(System.out::println);
+
+        //enderecoDao.deleteEndereco(5);
+        listEndereco = enderecoDao.selectAllEndereco();
+        listEndereco.forEach(System.out::println);
+
+        System.out.println(enderecoDao.count());
+        */
+
     }
 }
