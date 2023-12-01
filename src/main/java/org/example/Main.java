@@ -1,9 +1,7 @@
 package org.example;
 
-import org.example.dao.CidadeDAO;
-import org.example.dao.EmpresaDAO;
-import org.example.dao.EnderecoDAO;
-import org.example.dao.UfDAO;
+import org.example.dao.*;
+import org.example.model.Cliente;
 import org.example.model.Empresa;
 import org.example.model.Endereco;
 
@@ -16,6 +14,7 @@ public class Main {
     static CidadeDAO cidadeDao = new CidadeDAO();
     static EnderecoDAO enderecoDao = new EnderecoDAO();
     static EmpresaDAO empresaDao = new EmpresaDAO();
+    static ClienteDAO clienteDao = new ClienteDAO();
 
     public static void main(String[] args) throws SQLException {
 /*
@@ -93,7 +92,25 @@ uf = ufDao.selectUf(2);
 
         List<Empresa> listEmpresa = empresaDao.selectAllEmpresa();
         listEmpresa.forEach(System.out::println);
-        */
+
+//Cliente
+        Cliente cliente = new Cliente(1, "Davi", new java.sql.Date(1987-11-30), "4", "francisco@gmail.com", 4);
+        //clienteDao.insertCliente(cliente);
+        cliente = clienteDao.selectCliente(7);
+        System.out.println(cliente);
+
+        cliente.setNome("Jonatas");
+        clienteDao.updateCliente(cliente);
+        cliente = clienteDao.selectCliente(7);
+        System.out.println(cliente);
+
+        //clienteDao.deleteCliente(3);
+        System.out.println(clienteDao.count());
+
+        List<Cliente> listCliente = clienteDao.selectAllCliente();
+        listCliente.forEach(System.out::println);
+ */
+        
 
     }
 }
