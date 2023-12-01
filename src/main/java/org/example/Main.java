@@ -1,8 +1,10 @@
 package org.example;
 
 import org.example.dao.CidadeDAO;
+import org.example.dao.EmpresaDAO;
 import org.example.dao.EnderecoDAO;
 import org.example.dao.UfDAO;
+import org.example.model.Empresa;
 import org.example.model.Endereco;
 
 import java.sql.SQLException;
@@ -13,6 +15,7 @@ public class Main {
     static UfDAO ufDao = new UfDAO();
     static CidadeDAO cidadeDao = new CidadeDAO();
     static EnderecoDAO enderecoDao = new EnderecoDAO();
+    static EmpresaDAO empresaDao = new EmpresaDAO();
 
     public static void main(String[] args) throws SQLException {
 /*
@@ -72,6 +75,24 @@ uf = ufDao.selectUf(2);
         listEndereco.forEach(System.out::println);
 
         System.out.println(enderecoDao.count());
+
+//empresa
+        Empresa empresa = new Empresa(1, "mundo da tecnologia", "111111", new byte[]{01,02,03,04}, "a tecnologia que você precisa", 4);
+        //empresaDao.insertEmpresa(empresa);
+        empresa = empresaDao.selectEmpresa(2);
+        System.out.println(empresa);
+
+        empresa.setNomeFantasia("mar tec");
+        empresa.setSlogan("o mar de tecnologia");
+        empresaDao.updateEmpresa(empresa);
+        empresa = empresaDao.selectEmpresa(3);
+        System.out.println(empresa);
+
+        //empresaDao.deleteEmpresa(3);
+        System.out.println(empresaDao.count());
+
+        List<Empresa> listEmpresa = empresaDao.selectAllEmpresa();
+        listEmpresa.forEach(System.out::println);
         */
 
     }
