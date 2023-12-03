@@ -1,9 +1,7 @@
 package org.example;
 
 import org.example.dao.*;
-import org.example.model.Cliente;
-import org.example.model.Empresa;
-import org.example.model.Endereco;
+import org.example.model.ItemOrdemServico;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -15,6 +13,8 @@ public class Main {
     static EnderecoDAO enderecoDao = new EnderecoDAO();
     static EmpresaDAO empresaDao = new EmpresaDAO();
     static ClienteDAO clienteDao = new ClienteDAO();
+    static OrdemServicoDAO ordemServicoDao = new OrdemServicoDAO();
+    static ItemOrdemServicoDAO itemOrdemServicoDao = new ItemOrdemServicoDAO();
 
     public static void main(String[] args) throws SQLException {
 /*
@@ -109,8 +109,39 @@ uf = ufDao.selectUf(2);
 
         List<Cliente> listCliente = clienteDao.selectAllCliente();
         listCliente.forEach(System.out::println);
- */
-        
 
+//Ordem Servico
+        OrdemServico ordemServico = new OrdemServico(1, "Manutenção de notebook", new Timestamp(System.currentTimeMillis()), new Timestamp(System.currentTimeMillis()), "Pedro", 6, 1);
+        //ordemServicoDao.insertOrdemServico(ordemServico);
+        ordemServico = ordemServicoDao.selectOrdemServico(4);
+
+        ordemServico.setObservacao("Manutenção no notebook da Dell");
+        ordemServicoDao.updateOrdemServico(ordemServico);
+    //ordemServicoDao.deleteOrdemServico(3);
+
+    List<OrdemServico> listOrdemServico = ordemServicoDao.selectAllOrdemServico();
+    listOrdemServico.forEach(System.out::println);
+
+        System.out.println(ordemServicoDao.count());
+ */
+        //Item Ordem Servico
+        ItemOrdemServico itemOrdemServico = new ItemOrdemServico(1, "Notebook não liga", 350, 2);
+        //itemOrdemServicoDao.insertItemOrdemServico(itemOrdemServico);
+        System.out.println(itemOrdemServicoDao.count());
+
+        itemOrdemServico = itemOrdemServicoDao.selectItemOrdemServico(3);
+        System.out.println(itemOrdemServico);
+
+        itemOrdemServico.setDescricao("computador com a fonte queimada");
+        itemOrdemServico.setPreco(200);
+        itemOrdemServicoDao.updateItemOrdemServico(itemOrdemServico);
+        itemOrdemServico = itemOrdemServicoDao.selectItemOrdemServico(3);
+        System.out.println(itemOrdemServico);
+
+        List<ItemOrdemServico> listItemOrdemServico = itemOrdemServicoDao.selectAllItemOrdemServico();
+        listItemOrdemServico.forEach(System.out::println);
+
+        //itemOrdemServicoDao.deleteItemOrdemServico(2);
+        System.out.println(itemOrdemServicoDao.count());
     }
 }
