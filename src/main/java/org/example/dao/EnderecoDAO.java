@@ -2,7 +2,6 @@ package org.example.dao;
 
 import org.example.config.ConexaoDB;
 import org.example.model.Endereco;
-import org.example.model.UF;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

@@ -1,7 +1,6 @@
 package org.example.model;
 
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
 public class OrdemServico extends GenericModel {
 
